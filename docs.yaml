@@ -1,0 +1,113 @@
+openapi: 3.0.0
+info:
+  title: First Azure Function
+  description: Method Post with fake information about a person
+  version: 1.0.0
+servers:
+  - url: http://localhost:7071/api
+tags:
+  - name: person
+    description: Operations about user
+paths:
+  /person:
+    post:
+      tags:
+        - person
+      summary: Create person
+      # description: Create a new person.
+      operationId: createPerson
+      requestBody:
+        description: Created person object
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Person'
+      responses: 
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                  $ref: '#/components/schemas/Response200'
+        '400':
+          description: Unsuccesfull operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response400'
+              examples:
+                ERR00:
+                  value:
+                    msg: No body
+                    errorName: ERR00
+                ERR001:
+                  value:
+                    msg: Invalid name
+                    errorName: ERR01
+                ERR02:
+                  value:
+                    msg: Invalid first surname
+                    errorName: ERR02
+                ERR03:
+                  value:
+                    msg: Invalid second surname
+                    errorName: ERR03
+                ERR04:
+                  value:
+                    msg: Invalid birthdate format
+                    errorName: ERR04
+                ERR05:
+                  value:
+                    msg: Invalid birthdate
+                    errorName: ERR05
+                    
+                    
+components:
+  schemas:
+    Person:
+      required:
+        - firstName
+        - firstSurname
+        - secondSurname
+        - birthday
+      type: object
+      properties:
+        firstName:
+          type: string
+          example: josé
+        secondName:
+          type: string
+          example: robeRto
+        firstSurname:
+          type: string
+          example: saNtaNa
+        secondSurname:
+          type: string
+          example: mungUíA
+        birthday:
+          type: string
+          format: date-time
+          example: 2003-12-19
+      xml:
+        name: person
+    Response200:
+      type: object
+      properties:
+        fullName:
+          type: string
+          example: José Roberto Santana Munguía
+        age:
+          type: integer
+          format: int8
+          example: 21
+      xml:
+        name: response200
+    Response400:
+      type: object
+      properties:
+        msg:
+          type: string
+        errorName:
+          type: string
+      xml:
+        name: response400

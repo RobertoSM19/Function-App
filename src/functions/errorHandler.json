@@ -1,0 +1,61 @@
+{
+    "error00": {
+        "status": 400,
+        "body": {
+            "msg": "No body",
+            "errorName": "ERR00"
+        },
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    },"error01": {
+        "status": 400,
+        "body": {
+            "msg": "Invalid name",
+            "errorName": "ERR01"
+        },
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    },
+    "error02": {
+        "status": 400,
+        "body": {
+            "msg": "Invalid first surname",
+            "errorName": "ERR02"
+        },
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    },
+    "error03": {
+        "status": 400,
+        "body": {
+            "msg": "Invalid second surname",
+            "errorName": "ERR03"
+        },
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    },
+    "error04": {
+        "status": 400,
+        "body": {
+            "msg": "Invalid birthdate format",
+            "errorName": "ERR04"
+        },
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    },
+    "error05": {
+        "status": 400,
+        "body": {
+            "msg": "Invalid birthdate ",
+            "errorName": "ERR05"
+        },
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}
