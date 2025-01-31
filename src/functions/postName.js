@@ -28,6 +28,14 @@ app.http('person', {
         if (!bodyRequest.secondSurname) {
             return { status: errors.error03.status, body: JSON.stringify(errors.error03.body), headers: errors.error03.headers }
         }
+        if (!bodyRequest.area) {
+            return {
+                status: 400, body: JSON.stringify({
+                    "msg": "Invalid birthdate ",
+                    "errorName": "ERR05"
+                }), headers: { "Content-Type": "application/json" }
+            }
+        }
 
 
 
@@ -47,7 +55,7 @@ function birthdayValidation(birthdate) {
     const today = new Date();
     if (!birthdate || validator.isAfter(birthdate)) {
         throw errors.error05;
-    }else if (!validator.isDate(birthdate, ["YYYY-MM-DD"])) {
+    } else if (!validator.isDate(birthdate, ["YYYY-MM-DD"])) {
         throw errors.error04;
     }
 
