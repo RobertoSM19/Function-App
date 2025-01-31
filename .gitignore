@@ -1,11 +1,6 @@
 # Local files
 .vscode/
-package-lock.json
-package.json
 .funcignore
-host.json
-bootstrap.html
-jquery.js
 
 # Logs
 logs
@@ -100,7 +95,6 @@ out
 bin
 obj
 appsettings.json
-local.settings.json
 
 # Azurite artifacts
 __blobstorage__
