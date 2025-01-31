@@ -33,7 +33,7 @@ app.http('person', {
 
         try {
             const age = birthdayValidation(bodyRequest.birthdate);
-            let fullName = !bodyRequest.secondName ? bodyRequest.name : `${bodyRequest.name.charAt(0).toUpperCase() + bodyRequest.name.slice(1).toLowerCase()} ${bodyRequest.secondName.charAt(0).toUpperCase() + bodyRequest.secondName.slice(1).toLowerCase()}`;
+            let fullName = !bodyRequest.secondName ? bodyRequest.name.charAt(0).toUpperCase() + bodyRequest.name.slice(1).toLowerCase() : `${bodyRequest.name.charAt(0).toUpperCase() + bodyRequest.name.slice(1).toLowerCase()} ${bodyRequest.secondName.charAt(0).toUpperCase() + bodyRequest.secondName.slice(1).toLowerCase()}`;
             fullName += " " + bodyRequest.firstSurname.charAt(0).toUpperCase() + bodyRequest.firstSurname.slice(1).toLowerCase() + " " + bodyRequest.secondSurname.charAt(0).toUpperCase() + bodyRequest.secondSurname.slice(1).toLowerCase();
             return { status: 200, body: JSON.stringify({ fullName: fullName, age: age }), headers: { 'Content-Type': 'application/json' } }
         } catch (err) {
@@ -45,10 +45,10 @@ app.http('person', {
 
 function birthdayValidation(birthdate) {
     const today = new Date();
-    if (!validator.isDate(birthdate, ["YYYY-MM-DD"])) {
-        throw errors.error04;
-    } else if (!birthdate || validator.isAfter(birthdate)) {
+    if (!birthdate || validator.isAfter(birthdate)) {
         throw errors.error05;
+    }else if (!validator.isDate(birthdate, ["YYYY-MM-DD"])) {
+        throw errors.error04;
     }
 
     let age = today.getFullYear() - birthdate.slice(0, 4);
