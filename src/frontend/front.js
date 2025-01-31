@@ -7,8 +7,9 @@ btnPost.addEventListener("click", async () => {
     const firstSurname = document.getElementById("firstSurname").value.trim();
     const secondSurname = document.getElementById("secondSurname").value.trim();
     const birthdate = document.getElementById("birthdate").value;
+    const area=document.getElementById("area").value;
 
-    const data = { "name": name, "secondName": secondName, "firstSurname": firstSurname, "secondSurname": secondSurname, "birthdate": birthdate }
+    const data = { "name": name, "secondName": secondName, "firstSurname": firstSurname, "secondSurname": secondSurname, "birthdate": birthdate, "area":area}
 
     try {
         const res = await fetch("http://localhost:7071/api/person", {
@@ -20,7 +21,7 @@ btnPost.addEventListener("click", async () => {
             throw new Error(responseData.errorName+" "+responseData.msg)
         }
 
-        document.getElementById("response").textContent = `Hola, soy ${responseData.fullName} y tengo ${responseData.age} años de edad.`;
+        document.getElementById("response").textContent = `Hola, soy ${responseData.fullName} y tengo ${responseData.age} años de edad y estudias ${area}.`;
 
     } catch (err) {
         document.getElementById("response").textContent = err;
