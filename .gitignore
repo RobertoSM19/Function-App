@@ -1,6 +1,10 @@
 # Local files
 .vscode/
 .funcignore
+cron.js
+bootstrap.html
+jquery.js
+react.jsx
 
 # Logs
 logs

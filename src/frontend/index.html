@@ -6,13 +6,22 @@
 </head>
 
 <body>
-        <label for="name">Name: <input placeholder="juan" id="name" type="text" required name="name"></label><br>
-        <label for="secondName">Second Name: <input placeholder="Luis" id="secondName" type="text"></label><br>
-        <label for="firstSurname">First Surname: <input placeholder="Aguirre" id="firstSurname" type="text" required></label><br>
-        <label for="secondSurname">Second Surname: <input placeholder="Ochoa" id="secondSurname" type="text" required></label><br>
-        <label for="birthdate">Birthdate: <input placeholder="2005-12-15" id="birthdate" type="date" required></label><br>
-        <button id="btnPost">Clickeame</button><br>
+    <label for="name">Name: <input placeholder="juan" id="name" type="text" required name="name"></label><br>
+    <label for="secondName">Second Name: <input placeholder="Luis" id="secondName" type="text"></label><br>
+    <label for="firstSurname">First Surname: <input placeholder="Aguirre" id="firstSurname" type="text"
+            required></label><br>
+    <label for="secondSurname">Second Surname: <input placeholder="Ochoa" id="secondSurname" type="text"
+            required></label><br>
+    <label for="birthdate">Birthdate: <input placeholder="2005-12-15" id="birthdate" type="date" required></label><br>
+    <label for="area">Área de estudio: <select id="area">
+            <option value="Back" selected>Back</option>
+            <option value="Front">Front</option>
+        </select></label>
+    <button id="btnPost">Submit</button>
+    <button id="btnGet">GET Info</button><br>
     <label id="response"></label>
+    <div id="responseDiv"></div>
+
     <script src="./front.js"></script>
 </body>
 
