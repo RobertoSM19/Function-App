@@ -51,8 +51,26 @@
     "error05": {
         "status": 400,
         "body": {
-            "msg": "Invalid birthdate ",
+            "msg": "Invalid birthdate",
             "errorName": "ERR05"
+        },
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    },"error06": {
+        "status": 400,
+        "body": {
+            "msg": "Invalid area",
+            "errorName": "ERR06"
+        },
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    },"error07": {
+        "status": 400,
+        "body": {
+            "msg": "Invalid length for name",
+            "errorName": "ERR07"
         },
         "headers": {
             "Content-Type": "application/json"
