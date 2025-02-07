@@ -1,5 +1,20 @@
-const {handler,birthdayValidation} = require("./functions/postName");
+const {handler, birthdayValidation} = require("./functions/postName.js");
 const errors = require("./functions/errorHandler.json");
+
+jest.mock("./back/db.js", () => ({
+    findAll: jest.fn().mockResolvedValue([
+        {
+            idPerson: 1,
+            name: "John",
+            secondName: "Doe",
+            firstSurname: "Smith",
+            secondSurname: "Johnson",
+            birthdate: "1990-01-01",
+            area: "IT"
+        }
+    ]),
+    create: jest.fn().mockResolvedValue({})
+}));
 
 test('2024-01-20 should return 1', () => {
     expect(birthdayValidation("2024-01-20")).toBe(1);
@@ -23,15 +38,15 @@ describe('GET /person', ()=>{
         const res= await handler(req);
         expect(res.status).toBe(200);
 
-        // console.log(res.body);
-        expect(res.body).toEqual(JSON.stringify([{"idPerson":1,"name":"John","secondName":"Doe","firstSurname":"Smith","secondSurname":"Johnson","birthdate":"1990-01-01","area":"IT","id":1}]));
+        console.log(res.body);
+        expect(res.body).toEqual(JSON.stringify([{"idPerson":1,"name":"John","secondName":"Doe","firstSurname":"Smith","secondSurname":"Johnson","birthdate":"1990-01-01","area":"IT"}]));
     });
 
-    // it('should return error 500', async ()=>{  //Comentar la línea 4 de postName.js para que funcione el test
-    //     const req={method:'GET'};
-    //     const res= await handler(req);
-    //     expect(res.status).toBe(500);
-    // });
+//     it('Should return error 500 for no DB', async ()=>{  //Comentar la línea 4 de src/functions/postName.js para que funcione el test
+//         const req={method:'GET'};
+//         const res= await handler(req);
+//         expect(res.status).toBe(500);
+//     });
 });
 
 
@@ -47,6 +62,8 @@ describe('POST /person', ()=>{
     it('Return error 400 for no name',async()=>{
         const req={method:'POST',headers:{"Content-Type":"application/json"},body: JSON.stringify({name:'    ',firstSurname:'Smith',secondSurname:'Johnson',area:'IT'})};
         const res=await handler(req);
+
+        console.log(res);
 
         expect(res.status).toBe(errors.error01.status);
         expect(JSON.parse(res.body).msg).toBe(errors.error01.body.msg);
