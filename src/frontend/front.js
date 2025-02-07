@@ -41,6 +41,7 @@ btnGet.addEventListener("click", async () => {
     }
 });
 
+
 btnPost.addEventListener("click", async () => {
     const name = document.getElementById("name").value.trim();
     const secondName = document.getElementById("secondName").value.trim();
