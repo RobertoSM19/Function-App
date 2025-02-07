@@ -48,8 +48,9 @@ btnPost.addEventListener("click", async () => {
     const firstSurname = document.getElementById("firstSurname").value.trim();
     const secondSurname = document.getElementById("secondSurname").value.trim();
     const birthdate = document.getElementById("birthdate").value;
+    const area=document.getElementById("area").value;
 
-    const data = { "name": name, "secondName": secondName, "firstSurname": firstSurname, "secondSurname": secondSurname, "birthdate": birthdate }
+    const data = { "name": name, "secondName": secondName, "firstSurname": firstSurname, "secondSurname": secondSurname, "birthdate": birthdate, "area":area}
 
     try {
         const res = await fetch("http://localhost:7071/api/person", {
